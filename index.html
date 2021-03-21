@@ -1,0 +1,223 @@
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8">
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.35/dist/web3.min.js"></script> 
+		<script src="./JS/index.js"></script>
+    </head>
+    <body>
+      <form name="ID" ><br>
+	  <div id="balanceTKN20"></div>
+	  <div id="balanceMoveTKN20"></div>
+<h2>METODOS CLIENTE</h2>
+<h4>Registra Parcelas</h4>
+<table style="width:100%">
+  <tr>
+    <td><table>	
+				<tr>			
+					<td >
+                        <label>Propietario</label>
+					</td>
+					<td>
+						<div id="IDCustomerLand"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Nombre Parcela</label>
+					</td>
+					<td>
+						<input type="text" name="nameLand" id="nameLand">
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Altura Minima M</label>
+					</td>
+					<td>
+						<input type="text" name="altitudeMinLand" id="altitudeMinLand" onkeypress='return getNumber(event)'/>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Altura Maxima M</label>
+					</td>
+					<td>
+						<input type="text" name="altitudeMaxLand" id="altitudeMaxLand" onkeypress='return getNumber(event)' onchange="getValideAltitudeMaxLand(ID.altitudeMinLand.value, ID.altitudeMaxLand.value);"/>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Pesticida</label>
+					</td>
+					<td>
+					<select name="pesticideLand" id="pesticideLand">
+					<option value="Selecciona">Selecciona</option>
+    <option value="Pesticida.A">Pesticida.A</option>
+    <option value="Pesticida.B">Pesticida.B</option>
+    <option value="Pesticida.C">Pesticida.C</option>
+    <option value="Pesticida.D">Pesticida.D</option>
+	 <option value="Pesticida.E">Pesticida.E</option>
+  </select>
+					</td>
+                </tr>
+				<tr>					
+					<td>
+                        <input type="button" name="Registra Parcela" value="Registra Parcela" onclick="setRecordLand(ID.nameLand.value,ID.altitudeMinLand.value,ID.altitudeMaxLand.value, ID.pesticideLand.value);">
+					</td>
+					<td><div id="IDsLand"></div></td>
+                </tr>
+            </table></td>
+    <td align="left" style="width:60%">**Parcelas**
+	<div id="availableLand"></div></td>
+  </tr>
+ </table>
+ <table style="width:100%" >
+  <tr>
+    <td><table>
+			<br>
+		<h4>Solicita Servicio Fumigación</h4>
+			<table>
+				<tr>					
+					<td >
+                        <label>Propietario</label>
+					</td>
+					<td>
+						<div id="IDCustomerService"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>ID Parcela</label>
+					</td>
+					<td>
+						<input type="text" name="IDLand" id="IDLand" onchange="getIdLand(ID.IDLand.value);" onkeypress='return getNumber(event)'>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Pesticida Parcela</label>
+					</td>
+					<td>
+						<div id="IDPesticideLand"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>ID Dron</label>
+					</td>
+					<td>
+						<div id="IDdron"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                         <label>Altura Minima Dron M</label>
+					</td>
+					<td>
+						<div id="altitudeMinDron"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                         <label>Altura Maxima Dron M</label>
+					</td>
+					<td>
+						<div id="altitudeMaxDron"></div>
+					</td>
+                </tr>
+				<tr>					
+					<td ><h3>
+                         <label>Total a Pagar</label></h3>
+					</td>
+					<td><h3>
+						<div id="coste"></div></h3>
+					</td>
+                </tr>
+				<tr>					
+					<td>
+                        <input type="button" name="Realiza Pago" value="Realiza Pago" onclick="setPay(ID.IDLand.value);">
+					</td>
+					<td><div id="answerPay"></div></td>
+                </tr>
+            </table><br></td>
+    <td align="left" style="width:55%">**Drones Disponibles**
+	<div id="availableDron"></div></td>
+  </tr>
+ </table>
+<table>
+
+			
+	  <h2>METODOS EMPRESA FUMIGACIÓN CON DRONES</h2>
+        <h4>Registra Drones</h4>
+<table style="width:100%">
+  <tr>
+    <td><table>
+				<tr>					
+					<td >
+                        <label>Nombre Dron</label>
+					</td>
+					<td>
+						<input type="text" name="nameDron" id="nameDron">
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Altura Minima M</label>
+					</td>
+					<td>
+						<input type="text" name="altitudeMinDron" id="altitudeMinDron" onkeypress='return getNumber(event)'>
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Altura Maxima M</label>
+					</td>
+					<td>
+						<input type="text" name="altitudeMaxDron" id="altitudeMaxDron" onkeypress='return getNumber(event)' onchange="getValideAltitudeMaxDron(ID.altitudeMinDron.value, ID.altitudeMaxDron.value);">
+					</td>
+                </tr>
+				<tr>					
+					<td >
+                        <label>Pesticida</label>
+					</td>
+					<td>
+						<select name="pesticideDron" id="pesticideDron">
+						<option value="Selecciona">Selecciona</option>
+    <option value="Pesticida.A">Pesticida.A</option>
+    <option value="Pesticida.B">Pesticida.B</option>
+    <option value="Pesticida.C">Pesticida.C</option>
+    <option value="Pesticida.D">Pesticida.D</option>
+	 <option value="Pesticida.E">Pesticida.E</option>
+  </select>
+					</td>
+                </tr>
+				<tr>					
+					<td>
+                        <input type="button" name="Registra Dron" value="Registra Dron" onclick="setRecordDron(ID.nameDron.value,ID.altitudeMinDron.value,ID.altitudeMaxDron.value, ID.pesticideDron.value);">
+					</td>
+					<td><div id="IDsDron"></div></td>
+                </tr>
+            </table></td>
+    <td align="left" style="width:68%">**Drones**
+	<div id="recordDron"></div></td>
+  </tr>
+ </table>
+<table>
+			<br> 
+
+        </form>
+	<div >------</div>
+	<label>Address0</label>
+	  <div id="address0"></div>
+	  <label>TokenIdDron</label>
+	  <div id="tokenIdDron"></div>
+	  <label>TokenIdLand</label>
+	  <div id="tokenIdLand"></div>
+	  <label>customerBalanceOf</label>
+	  <div id="customerBalanceOf"></div>
+      <div id="console"></div><br><br>
+	  
+    </body>
+</html>
+
+
